@@ -1,0 +1,2 @@
+def getString():
+    return "hello"

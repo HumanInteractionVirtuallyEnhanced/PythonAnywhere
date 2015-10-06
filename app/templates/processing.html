@@ -1,0 +1,46 @@
+<html>
+<head>
+<!--<script src="/static/js/jquery-1.7.1.min.js"></script>-->
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+
+</head>
+<body>
+    Processing...
+</body>
+
+<script>
+    function ajaxCallback(data) {
+        if (data.done){
+            alert('finish callback');
+            alert(data);
+           // window.location.replace("http://YOUR_GENERATED_PAGE_URL");
+        }
+        else{
+            alert('start callback');
+            window.setTimeout(function() {
+               $.getJSON('{{ url_for('is_done') }}', {id: '{{ id }}' }, ajaxCallback).fail(function (json){
+                  // alert('failed');
+                  alert(json);
+               });
+            }, 3000);
+        }
+    }
+    // function startAjaxCall(){
+    //     window.setTimeout(function() {
+    //              $.getJSON('{{ url_for('is_done') }}', {id: '{{ id }}' }).done(function( json ) {
+    //                  alert('done');
+    //              })
+    //              .fail(function( json ){
+    //                  alert('fail');
+    //              });
+    //              //, ajaxCallback);
+    //          }, 3000);
+    // }
+    $(document).ready(function(){
+       // startAjaxCall();
+       // ajaxCallback();
+        ajaxCallback({done:false});
+    });
+</script>
+</html>

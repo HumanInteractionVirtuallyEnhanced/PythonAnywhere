@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Hive</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <link href="/static/lcss/style.css" rel="stylesheet" type="text/css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <!--[if IE]>
+            <style type="text/css">
+                div.subscribe, div.timeblock {
+                    background:transparent;
+                    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#5081cece,endColorstr=#5081cece);
+                    zoom: 1;
+                }
+
+                h1.logo {
+                    background:transparent;
+                    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#50FFFFFF,endColorstr=#50FFFFFF);
+                    zoom: 1;
+                }
+
+                div.social a {
+                    background:transparent;
+                    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#50e67a79,endColorstr=#50e67a79);
+                    zoom: 1;
+                }
+            </style>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="container header">
+                <h1 class="logo"></h1>
+                <h3>Local Celebrity Leaderboard</h3>
+                <p>Search <a href="https://itunes.apple.com/us/app/hive-the-local-network/id976995828?ls=1&mt=8" style="text-decoration:none; color:black;"><strong>Yale Hive</strong></a> in the app store to get it now.</p>
+            </div>
+            <div class="timeblock clearfix">
+                <div class="container">
+                    <div class="timer clearfix">
+                        <ul id="countdown">
+                            <li>
+                                <span class="days" style="font-size:40%">Wednesday</span>
+                               <p class="timeRefDays"</p>
+                            </li>
+                            <li class="seperator">&nbsp;&nbsp;</li>
+                            <li>
+                                <span class="hours"></span>
+                                <p class="timeRefHours"></p>
+                            </li>
+                            <li class="seperator"></li>
+                            <li>
+                                <span class="minutes" style="font-size:40%">@Midnight</span>
+                                <p class="timeRefMinutes"></p>
+                            </li>
+                            <li class="seperator"></li>
+                            <li>
+                                <span class="seconds"></span>
+                                <p class="timeRefSeconds"></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="subscribe nine columns">
+                    <form id="subscribe" action="../static/lemail/mailchimp.php" class="clearfix">
+                        <div class="input six alpha columns"><input type="text" name="email" placeholder="Enter your email" /></div>
+                        <button class="three btn omega alpha columns">Subscribe</button>
+                        <div class="error_alert">Oops! There was a error!</div>
+                    </form>
+                </div>
+                <div class="social clearfix">
+                    <div class="one-third column">
+                        <a href="http://www.twitter.com/SoLoCoHive" target="blank" class="twitter">Twitter</a>
+
+                        <span>Follow Us</span>
+                    </div>
+                    <div class="one-third column">
+                        <a href="https://www.facebook.com/yalehive" target="blank" class="facebook">Facebook</a>
+
+                        <span>Like Us</span>
+                    </div>
+                    <div class="one-third column">
+                        <a href="mailto:founders@yalehive.com" target="blank" class="mail">Email</a>
+
+                        <span>Contact Us</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div id="leaderHolder">
+            <div class="timeblock clearfix">
+                <div class="container">
+                    <div class="timer clearfix">
+                        <ul id="countdown">
+                            <li class="seperator" style="font-size:80%">&nbsp;</li>
+                            <li style="font-size:80%">
+                                <span class="hours" style="font-size:80%">Getting Hive Leaders</span>
+                                <p class="timeRefHours" >Please Wait...</p>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </div>
+<br>
+<br>
+<br>
+<br>
+<p class="copyright" style="font-size:60%; color:gray; float-left:10px; line-size:2px;">By participating in the "Hive" celebrity contest, you agree to abide by the following rules. <br>Any participant must download the app to enter. You must be enrolled at Yale University to win. Any person(s) <span style="font-size:10%">living or fake</span> may vote and follow and be counted in the competition.  <br>Hive must have 500 users by the end of the competition for any prizes to be awarded. The top winner must have at least 100 folowers. If neither of these conditions are met by the end date, the competition may be extended 3 days.</p></p>
+        </div>
+
+
+
+
+        <script type="text/javascript" src="/static/ljs/lib/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="/static/ljs/lib/jquery.downCount.js"></script>
+        <script type="text/javascript" src="/static/ljs/main.js"></script>
+
+
+    <script>
+        function leaders(){
+            $.post('/get_leaders', {
+                test:'test'
+            }).done(function(purchased_item) {
+                document.getElementById('leaderHolder').innerHTML = purchased_item;
+                //alert(purchased_item);
+            }).fail(function() {
+                alert("I'm sorry, there was an error.");
+            });
+        }
+    </script>
+
+<script>
+    leaders();
+</script>
+
+    </body>
+</html>

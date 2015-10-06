@@ -1,0 +1,40 @@
+ {% for u in users %}
+            <div class="timeblock clearfix">
+                <div class="container">
+                    <div class="timer clearfix">
+                        <ul id="countdown">
+                            <li style="font-size:80%;">
+                                <span class="days" ><img class="profilePic" style="margin:0 auto; margin-top:10px;" src="http://graph.facebook.com/{{u.fb_id}}/picture?width=300&height=300"></span>
+                               <p class="timeRefDays">{{u.nickname}}</p>
+                            </li>
+                            <li class="seperator" style="font-size:80%">&nbsp;</li>
+                            <li style="font-size:80%">
+                                <span class="hours" style="font-size:80%">{{u.followers.count()}}</span>
+                                <p class="timeRefHours" >Followers</p>
+                            </li>
+                            <li class="seperator" style="font-size:80%">&nbsp;</li>
+                            <li style="font-size:80%">
+                                <span class="minutes" style="font-size:80%">{{u.get_total_likes()}}</span>
+                                <p class="timeRefMinutes">Karma</p>
+                            </li>
+                            <li class="seperator" style="font-size:80%">&nbsp;</li>
+                            <li style="font-size:50%">
+                                <span class="seconds">
+                                    {% if loop.index == 1%}
+                                    1st
+                                    {% elif loop.index == 2%}
+                                    2nd
+                                    {% elif loop.index == 3%}
+                                    3rd
+                                    {% else %}
+                                    {{loop.index}}th
+                                    {% endif %}
+
+                                </span>
+                                <p class="timeRefSeconds"></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
